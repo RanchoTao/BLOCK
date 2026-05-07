@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "BLOCK",
+  "description": "A local-first universal blacklist MVP for hiding unwanted web content.",
+  "version": "0.1.0",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "src/shared/rules.js",
+        "src/shared/storage.js",
+        "src/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "BLOCK blacklist",
+    "default_popup": "src/popup/popup.html"
+  },
+  "options_page": "src/options/options.html",
+  "icons": {
+    "16": "BLOCK.png",
+    "48": "BLOCK.png",
+    "128": "BLOCK.png"
+  }
+}

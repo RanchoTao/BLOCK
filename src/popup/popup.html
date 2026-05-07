@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BLOCK blacklist</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">BLOCK MVP</p>
+          <h1>Blacklist</h1>
+        </div>
+        <a href="../options/options.html" target="_blank" rel="noopener">Options</a>
+      </header>
+
+      <form id="rule-form" class="rule-form">
+        <label>
+          Type
+          <select id="rule-type" name="type">
+            <option value="keyword">Keyword / phrase</option>
+            <option value="selector">CSS selector</option>
+            <option value="domain">Domain</option>
+            <option value="regex">Regex (advanced)</option>
+          </select>
+        </label>
+        <label>
+          Pattern
+          <input id="rule-pattern" name="pattern" type="text" placeholder="Sponsored, .ad-card, example.com" required>
+        </label>
+        <label>
+          Note <span>(optional)</span>
+          <input id="rule-note" name="note" type="text" placeholder="Why this is blocked">
+        </label>
+        <button type="submit">Add rule</button>
+        <p id="form-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <section class="rules-section">
+        <div class="section-header">
+          <h2>Rules</h2>
+          <button id="refresh-button" type="button">Refresh</button>
+        </div>
+        <ul id="rules-list" class="rules-list"></ul>
+        <p id="empty-state" class="empty-state">No blacklist rules yet. Add one above or right-click selected text on a page.</p>
+      </section>
+    </main>
+
+    <template id="rule-template">
+      <li class="rule-card">
+        <div class="rule-row">
+          <label class="switch-label">
+            <input class="rule-enabled" type="checkbox">
+            <span>Enabled</span>
+          </label>
+          <span class="rule-type"></span>
+        </div>
+        <label>
+          Pattern
+          <input class="rule-pattern" type="text">
+        </label>
+        <label>
+          Note
+          <input class="rule-note" type="text">
+        </label>
+        <p class="rule-meta"></p>
+        <div class="rule-actions">
+          <button class="save-rule" type="button">Save</button>
+          <button class="delete-rule danger" type="button">Delete</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="../shared/rules.js"></script>
+    <script src="../shared/storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

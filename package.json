@@ -1,0 +1,10 @@
+{
+  "name": "block-extension-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BLOCK Chrome Manifest V3 blacklist MVP",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {}
+}
